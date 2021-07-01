@@ -1,8 +1,9 @@
 //#include "bwamem.h"
 #define DIMREF 1024
-#define UNROLL_FACTOR 32
+#define UNROLL_FACTOR 64
 #define MINUS_INF -32000
 
+const unsigned int uf = UNROLL_FACTOR;
 
 #include <ap_int.h>
 #include <stdio.h>
@@ -40,9 +41,9 @@ void computeAntidiag(unsigned short *antiDiag1_M,
 		
 		// printf("minRow %d\n", minRow);
 		to_unroll:for(int i = 0; i < DIMREF; i+=UNROLL_FACTOR){
-#pragma HLS DEPENDENCE variable=antiDiag1_M false inter
 //#pragma HLS DEPENDENCE variable=antiDiag1_M false inter
-#pragma HLS DEPENDENCE variable=antiDiag2_D false inter
+//#pragma HLS DEPENDENCE variable=antiDiag1_M false inter
+//#pragma HLS DEPENDENCE variable=antiDiag2_D false inter
 			for(int j = 0; j < UNROLL_FACTOR; j++){
 				if(st <= i + j && i + j < en){
 
@@ -142,25 +143,25 @@ void SW (ap_uint<512> *query_global,
 	target = (char*)target_local;
 
 	unsigned short antiDiag1_M_buffer[DIMREF];
-#pragma HLS ARRAY_PARTITION variable=antiDiag1_M_buffer dim=1 factor=32 cyclic
+#pragma HLS ARRAY_PARTITION variable=antiDiag1_M_buffer dim=1 factor=uf cyclic
 	unsigned short antiDiag2_M_buffer[DIMREF];
-#pragma HLS ARRAY_PARTITION variable=antiDiag2_M_buffer dim=1 factor=32 cyclic
+#pragma HLS ARRAY_PARTITION variable=antiDiag2_M_buffer dim=1 factor=uf cyclic
 	unsigned short antiDiag3_M_buffer[DIMREF];
-#pragma HLS ARRAY_PARTITION variable=antiDiag3_M_buffer dim=1 factor=32 cyclic
+#pragma HLS ARRAY_PARTITION variable=antiDiag3_M_buffer dim=1 factor=uf cyclic
 
 	unsigned short antiDiag2_I_buffer[DIMREF];
-#pragma HLS ARRAY_PARTITION variable=antiDiag2_I_buffer dim=1 factor=32 cyclic
+#pragma HLS ARRAY_PARTITION variable=antiDiag2_I_buffer dim=1 factor=uf cyclic
 	unsigned short antiDiag3_I_buffer[DIMREF];
-#pragma HLS ARRAY_PARTITION variable=antiDiag3_I_buffer dim=1 factor=32 cyclic
+#pragma HLS ARRAY_PARTITION variable=antiDiag3_I_buffer dim=1 factor=uf cyclic
 
 	unsigned short antiDiag2_D_buffer[DIMREF];
-#pragma HLS ARRAY_PARTITION variable=antiDiag2_D_buffer dim=1 factor=32 cyclic
+#pragma HLS ARRAY_PARTITION variable=antiDiag2_D_buffer dim=1 factor=uf cyclic
 	unsigned short antiDiag3_D_buffer[DIMREF];
-#pragma HLS ARRAY_PARTITION variable=antiDiag3_D_buffer dim=1 factor=32 cyclic
+#pragma HLS ARRAY_PARTITION variable=antiDiag3_D_buffer dim=1 factor=uf cyclic
 
 
 	unsigned short *antiDiag1_M = antiDiag1_M_buffer;
-	unsigned short *antiDiag2_M = antiDiag2_M_buffer
+	unsigned short *antiDiag2_M = antiDiag2_M_buffer;
 	unsigned short *antiDiag3_M = antiDiag3_M_buffer;
 	//
 	unsigned short *antiDiag2_I = antiDiag2_I_buffer;

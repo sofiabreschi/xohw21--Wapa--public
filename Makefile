@@ -77,7 +77,7 @@ endif
 
 
 # Adding config files to linker
-# LDCLFLAGS += --config SW.ini
+LDCLFLAGS += --config SW.ini
 EXECUTABLE = host
 CMD_ARGS = $(BUILD_DIR)/wapa.xclbin
 EMCONFIG_DIR = $(TEMP_DIR)
