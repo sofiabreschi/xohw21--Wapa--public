@@ -1,0 +1,51 @@
+<ENTRY>
+{
+ "thisFile": "/home/users/alberto.zeni/Repositories/xohw21--Wapa--private/_x.hw.xilinx_u280_xdma_201920_3/SW.xo.compile_summary",
+ "connectId": "",
+ "serverToken": "",
+ "timestamp": "0"
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_CmdStep",
+ "dateTimestamp": "Tue Jun 29 21:33:43 2021",
+ "timestampMillis": "1624995223462",
+ "buildStep": {
+  "cmdId": "3993a677-5872-41e1-b300-812091db60d7",
+  "name": "v++",
+  "logFile": "/home/users/alberto.zeni/Repositories/xohw21--Wapa--private/_x.hw.xilinx_u280_xdma_201920_3/SW/SW.steps.log",
+  "commandLine": "/xilinx/software/Vitis/2020.2/bin/unwrapped/lnx64.o/v++  --xp \"vivado_prop:run.__KERNEL__.{STEPS.SYNTH_DESIGN.ARGS.MORE OPTIONS}={-directive sdx_optimization_effort_high}\" --xp \"misc:report=type report_timing_summary name impl_report_timing_summary_route_design_summary steps {route_design} runs {impl_1} options {-max_paths 10}\" --xp \"misc:report=type report_timing_summary name impl_report_timing_summary_post_route_phys_opt_design_summary steps {post_route_phys_opt_design} runs {impl_1} options {-max_paths 10}\" -t hw --platform /opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm --save-temps --kernel_frequency 225 --temp_dir ./_x.hw.xilinx_u280_xdma_201920_3 -c -k SW -Isrc -o_x.hw.xilinx_u280_xdma_201920_3/SW.xo src/wapa.cpp ",
+  "args": [
+   "-t",
+   "hw",
+   "--platform",
+   "/opt/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm",
+   "--save-temps",
+   "--kernel_frequency",
+   "225",
+   "--temp_dir",
+   "./_x.hw.xilinx_u280_xdma_201920_3",
+   "-c",
+   "-k",
+   "SW",
+   "-Isrc",
+   "-o_x.hw.xilinx_u280_xdma_201920_3/SW.xo",
+   "src/wapa.cpp"
+  ],
+  "iniFiles": [],
+  "cwd": "/home/users/alberto.zeni/Repositories/xohw21--Wapa--private"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Tue Jun 29 21:33:43 2021",
+ "timestampMillis": "1624995223463",
+ "status": {
+  "cmdId": "3993a677-5872-41e1-b300-812091db60d7",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
